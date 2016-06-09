@@ -33,7 +33,7 @@ $factory->define(App\Schedule::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Agenda::class, function (Faker\Generator $faker) {
     return [
-        'schedule_id'   => factory(App\Schedule::class)->create()->id,
+        // 'schedule_id'   => factory(App\Schedule::class)->create()->id,
         'time'  => $faker->time,
         'venue' => $faker->sentence,
         'title' => $faker->sentence,
