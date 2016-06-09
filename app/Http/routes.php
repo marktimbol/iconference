@@ -62,7 +62,7 @@ Route::group([ 'middleware' => ['web', 'auth'], 'prefix' => 'dashboard'], functi
 	]);
 
 	/**
-	 * Companies
+	 * Exhibitors
 	 */
 	Route::resource('exhibitors.contacts', 'Dashboard\ExhibitorContactsController', [
 		'only' => ['store', 'destroy']
