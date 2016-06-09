@@ -13,7 +13,7 @@
         "algolia/algoliasearch-laravel": "^1.0",
         "pda/pheanstalk": "~3.0",
         "pusher/pusher-php-server": "^2.3",
-        "fzaninotto/faker": "~1.4",
+        "fzaninotto/faker": "~1.4"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
