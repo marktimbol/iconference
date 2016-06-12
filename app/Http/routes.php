@@ -1,4 +1,6 @@
 <?php
+
+use App\Events\UserReplied;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -9,19 +11,6 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
-Route::get('/pusher', function()
-{
-	// $pusher = new Pusher(
-	// 	'a892016947101331c193',
-	// 	'23711c1452c32496c02d',
-	// 	'207233'
-	// );
-
-	// $pusher->trigger('whenUserReplied', 'UserReplied', [
-	// 	'data' => 'Hello from Socket.io'
-	// ]);
-});
 
 Route::group([ 'middleware' => ['web', 'auth'], 'prefix' => 'dashboard'], function() {
 	/**
