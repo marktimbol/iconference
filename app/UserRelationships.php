@@ -14,6 +14,11 @@ trait UserRelationships
     	return $this->hasMany(Message::class);
     }
 
+    public function meetings()
+    {
+        return $this->belongsToMany(User::class, 'user_meetings', 'from', 'to')->withPivot('meeting_id');
+    }
+
     // public function sentMessages()
     // {
     //     return $this->belongsToMany(User::class, 'threads', 'sender_id', 'receiver_id')

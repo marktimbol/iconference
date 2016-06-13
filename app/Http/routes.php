@@ -84,6 +84,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 		'only' => ['index', 'show', 'store']
 	]);
 	Route::get('haveConversation/{user1}/{user2}', 'Api\UsersController@haveConversation');
+	Route::resource('meetings', 'Api\MeetingsController', [
+		'only' => ['index', 'store', 'update', 'destroy']
+	]);
 });
 
 Route::group(['prefix' => 'api/public'], function() {

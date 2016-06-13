@@ -22,7 +22,6 @@ class MessagesController extends Controller
 
     public function store(Request $request)
     {
-    	dd($request->all());
     	$thread = new Thread([
     		'subject'	=> $request->subject
     	]);

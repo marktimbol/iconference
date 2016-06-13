@@ -87,3 +87,12 @@ $factory->define(App\Message::class, function (Faker\Generator $faker) {
         'message' => $faker->sentence,
     ];
 });
+
+$factory->define(App\Meeting::class, function (Faker\Generator $faker) {
+    return [
+        'duration'  => '20 minutes',
+        'when'      => 'Today',
+        'where'     => $faker->country,
+        'message'   => $faker->paragraph,
+    ];
+});

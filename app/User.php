@@ -21,7 +21,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $with = ['roles'];
+    protected $with = ['roles', 'meetings'];
 
     public static $autoIndex = true;
     public static $autoDelete = true;
@@ -32,5 +32,12 @@ class User extends Authenticatable
     {
         $this->attributes['name'] = $name;
         $this->attributes['api_token'] = str_random(60);
+    }
+
+    public function requestMeeting($to, Meeting $meeting)
+    {
+        return $this->meetings()->attach($to, [
+            'meeting_id' => $meeting->id
+        ]);
     }
 }
