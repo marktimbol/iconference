@@ -13,7 +13,7 @@ class MeetingsTest extends TestCase
     	$john = factory(App\User::class)->create();
     	$jane = factory(App\User::class)->create();
 
-    	$response = $this->call('POST', 'api/meetings', [
+    	$response = $this->json('POST', 'api/meetings', [
     		'api_token' => $john->api_token,
     		'to'		=> $jane->id,
     		'duration'	=> '10 minutes',
@@ -35,6 +35,12 @@ class MeetingsTest extends TestCase
     		'from'			=> $john->id,
     		'to'			=> $jane->id,
     	]);
+
+        // ->seeJson([
+        //     'meeting_id'    => 1,
+        //     'from'          => $john->id,
+        //     'to'            => $jane->id,
+        // ]);
     }
 
 	public function test_an_authenticated_user_can_view_all_his_or_her_meetings()

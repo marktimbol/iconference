@@ -12,7 +12,12 @@ use App\Events\UserReplied;
 |
 */
 
-Route::group([ 'middleware' => ['web', 'auth'], 'prefix' => 'dashboard'], function() {
+Route::group(['middleware' => 'web'], function() {
+	Route::get('/', 'Auth\AuthController@showLoginForm');
+	Route::auth();
+});
+
+Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'dashboard'], function() {
 	/**
 	 * Dashboard
 	 */
@@ -68,11 +73,6 @@ Route::group([ 'middleware' => ['web', 'auth'], 'prefix' => 'dashboard'], functi
 	 */
 	Route::resource('medias', 'Dashboard\MediasController');
 });
-
-Route::group(['middleware' => 'web'], function () {
-	Route::get('/', 'Auth\AuthController@showLoginForm');
-    Route::auth();
-});
  
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 	Route::get('user/threads', 'Api\UserThreadsController@index');
@@ -92,14 +92,10 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 Route::group(['prefix' => 'api/public'], function() {
 	Route::post('login', 'Api\AuthController@login');
 	Route::resource('schedules', 'Api\SchedulesController', [
-		'only' => [
-			'index', 'show'
-		]
+		'only' => ['index', 'show']
 	]);
 	Route::resource('speakers', 'Api\SpeakersController', [
-		'only' => [
-			'index', 'show'
-		]	
+		'only' => ['index', 'show']	
 	]);
 
 	Route::get('exhibitors', 'Api\ExhibitorsController@index');
